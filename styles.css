@@ -14,6 +14,9 @@
   --pink:          #FF6B9D;
   --aqua:          #4ECDC4;
   --aqua-deep:     #1B9AAA;
+  --lime:          #6DAF46;  /* 3DPS brand */
+  --lime-light:    #84C45C;
+  --lime-deep:     #4E8A30;
   --cream:         #FFF8E7;
   --paper:         #FFFBF0;
   --ink:           #1A1B3A;
@@ -394,6 +397,90 @@ textarea { min-height: 140px; resize: vertical; }
 }
 .tag.pink { background: var(--pink); color: #fff; }
 .tag.aqua { background: var(--aqua); color: var(--ink); }
+
+/* ---------- 3DPS (Parent Brand) ---------- */
+.section-dps {
+  background: linear-gradient(160deg, #1A1B3A 0%, #25264F 100%);
+  color: #E5E6F0;
+  border-top: 4px solid var(--lime);
+  border-bottom: 4px solid var(--lime);
+  position: relative;
+}
+.section-dps h2 { color: #fff; }
+.section-dps .eyebrow {
+  background: rgba(109,175,70,.15);
+  color: var(--lime-light);
+}
+.section-dps .lead { color: #BDBED2; }
+.section-dps a { color: var(--lime-light); }
+.dps-grid {
+  display: grid; gap: 2rem;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+}
+@media (max-width: 800px) { .dps-grid { grid-template-columns: 1fr; text-align: center; }
+  .dps-grid .dps-cta { justify-content: center; }
+}
+.dps-wordmark {
+  color: #fff;
+  width: 220px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform .2s;
+}
+.dps-wordmark:hover { transform: rotate(-3deg) scale(1.04); }
+.dps-wordmark img { width: 100%; height: 100%; object-fit: contain; }
+.dps-cta {
+  display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.4rem;
+}
+.dps-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .8rem 1.4rem;
+  font-family: var(--font-display); font-weight: 600; font-size: .95rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--lime);
+  background: var(--lime); color: #fff;
+  cursor: pointer; transition: transform .15s, box-shadow .15s, background .2s;
+  text-decoration: none;
+}
+.dps-btn:hover { transform: translateY(-2px); background: var(--lime-light); text-decoration: none; }
+.dps-btn.ghost { background: transparent; color: var(--lime-light); }
+.dps-btn.ghost:hover { background: rgba(109,175,70,.15); color: #fff; }
+
+.dps-services {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem;
+}
+.dps-tag {
+  font-family: var(--font-display); font-weight: 500; font-size: .8rem;
+  padding: .3rem .8rem;
+  border-radius: var(--radius-pill);
+  background: rgba(109,175,70,.12);
+  color: var(--lime-light);
+  border: 1px solid rgba(109,175,70,.3);
+}
+
+/* Footer badge variant */
+.dps-badge {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.dps-badge .label {
+  font-family: var(--font-display); font-size: .75rem;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: #9897b8; margin-bottom: .5rem;
+}
+.dps-badge .dps-wordmark {
+  width: 84px;
+  margin: 0 0 .6rem;
+}
+.dps-badge .links {
+  font-size: .9rem;
+  display: flex; gap: .8rem; flex-wrap: wrap;
+}
+.dps-badge .links a { color: var(--lime-light); }
 
 /* ---------- Crew Avatars ---------- */
 .avatar {
