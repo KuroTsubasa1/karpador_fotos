@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Karpador mit Drucker">
+  <defs>
+    <radialGradient id="adBody" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="100%" stop-color="#E85D04"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Karpador head -->
+  <path d="M16 50
+           C 16 28, 34 14, 54 14
+           C 74 14, 92 28, 92 50
+           C 92 68, 74 80, 54 80
+           C 34 80, 16 68, 16 50 Z"
+        fill="url(#adBody)" stroke="#1A1B3A" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- White belly -->
+  <path d="M22 64 C 34 78, 74 78, 86 64 C 84 74, 72 80, 54 80 C 36 80, 24 74, 22 64 Z"
+        fill="#FFF8E7" stroke="#1A1B3A" stroke-width="2.8" stroke-linejoin="round"/>
+
+  <!-- Crown -->
+  <path d="M28 20 L 36 6 L 44 18 L 54 4 L 64 18 L 72 6 L 80 20 Z"
+        fill="#FFD23F" stroke="#1A1B3A" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Eye -->
+  <circle cx="40" cy="42" r="10" fill="#FFFFFF" stroke="#1A1B3A" stroke-width="3"/>
+  <circle cx="40" cy="42" r="5.5" fill="#1A1B3A"/>
+  <circle cx="38" cy="40" r="1.4" fill="#fff"/>
+
+  <!-- Headphone (the "Flüsterer") -->
+  <path d="M16 38 C 16 22, 32 12, 54 12 C 76 12, 92 22, 92 38"
+        fill="none" stroke="#1A1B3A" stroke-width="3.5" stroke-linecap="round"/>
+  <ellipse cx="14" cy="42" rx="5" ry="7" fill="#FF6B9D" stroke="#1A1B3A" stroke-width="2.5"/>
+  <ellipse cx="94" cy="42" rx="5" ry="7" fill="#FF6B9D" stroke="#1A1B3A" stroke-width="2.5"/>
+
+  <!-- Mouth -->
+  <ellipse cx="68" cy="54" rx="6" ry="5" fill="#FF6B9D" stroke="#1A1B3A" stroke-width="2.5"/>
+
+  <!-- Cheek -->
+  <circle cx="78" cy="60" r="3.5" fill="#FF6B9D" opacity="0.6"/>
+
+  <!-- Printer at the bottom -->
+  <g>
+    <!-- Output photo -->
+    <rect x="58" y="74" width="32" height="14" rx="1.5" fill="#FFF8E7" stroke="#1A1B3A" stroke-width="2.5"/>
+    <rect x="62" y="78" width="20" height="2" rx="1" fill="#FF7A1A"/>
+    <rect x="62" y="82" width="14" height="1.6" rx=".8" fill="#FFD23F"/>
+    <!-- Printer body -->
+    <rect x="46" y="86" width="58" height="22" rx="4" fill="#1A1B3A" stroke="#1A1B3A" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="52" y="90" width="46" height="6" rx="1.5" fill="#FF7A1A"/>
+    <circle cx="96" cy="102" r="2" fill="#FFD23F"/>
+    <circle cx="89" cy="102" r="1.4" fill="#4ECDC4"/>
+  </g>
+
+  <!-- Magic sparkles -->
+  <g fill="#FFD23F" stroke="#1A1B3A" stroke-width="1.5" stroke-linejoin="round">
+    <path d="M104 26 L 106 32 L 112 34 L 106 36 L 104 42 L 102 36 L 96 34 L 102 32 Z"/>
+    <path d="M14 76 L 16 80 L 20 82 L 16 84 L 14 88 L 12 84 L 8 82 L 12 80 Z" opacity=".85"/>
+  </g>
+</svg>

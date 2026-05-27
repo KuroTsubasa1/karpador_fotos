@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brand Guide — Karpador Fotos</title>
+  <meta name="description" content="Logo, Farben, Typografie, Tone of Voice — die visuelle Identität von Karpador Fotos." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .swatch {
+      border: 3px solid var(--ink); border-radius: var(--radius); overflow: hidden;
+      box-shadow: 5px 5px 0 var(--ink);
+    }
+    .swatch .top { height: 120px; }
+    .swatch .meta {
+      padding: .9rem 1rem; background: #fff;
+      font-family: var(--font-display);
+    }
+    .swatch .meta b { display: block; font-size: 1.1rem; }
+    .swatch .meta code {
+      background: var(--cream); padding: 1px 6px; border-radius: 6px;
+      font-size: .9rem; color: var(--ink-soft);
+    }
+
+    .type-row {
+      display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem;
+      align-items: center;
+      padding: 1.4rem 1.6rem;
+      border: 3px solid var(--ink); border-radius: var(--radius);
+      background: #fff; box-shadow: 5px 5px 0 var(--ink);
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 700px) { .type-row { grid-template-columns: 1fr; } }
+    .type-row .meta { font-family: var(--font-display); }
+    .type-row .meta b { display:block; font-size: 1.2rem; }
+    .type-row .meta code { color: var(--ink-soft); }
+    .type-row .demo { font-size: 1.6rem; line-height: 1.2; }
+
+    .logo-card {
+      border: 3px solid var(--ink); border-radius: var(--radius);
+      padding: 2rem; display: grid; place-items: center;
+      background: var(--cream); box-shadow: 5px 5px 0 var(--ink);
+      aspect-ratio: 1/1;
+    }
+    .logo-card.dark { background: var(--ink); }
+    .logo-card.orange { background: var(--orange); }
+    .logo-card img { max-width: 70%; }
+
+    .do-dont {
+      display: grid; gap: 1rem; grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 700px) { .do-dont { grid-template-columns: 1fr; } }
+    .do-dont .card { border-color: var(--ink); }
+    .do-dont .card.do { background: rgba(78,205,196,.15); }
+    .do-dont .card.dont { background: rgba(255,107,157,.15); }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/favicon.svg" alt="" />
+      <span class="brand-text"><span>Karpador</span><span>F O T O S</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menü"><span></span></button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="spenden.html">Spenden</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visual Identity</span>
+      <h1><span style="color:var(--orange)">Brand</span> Guide</h1>
+      <p class="lead" style="margin: 0 auto;">Logo, Farben, Schriften, Tone of Voice. Damit Karpador Fotos überall gleich knall-orange aussieht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section>
+  <div class="container">
+    <span class="eyebrow">01 · Logo</span>
+    <h2>Maskottchen & Wortmarke</h2>
+    <p class="lead">Das Maskottchen funktioniert solo (App-Icon, Sticker, Avatar) oder mit Wortmarke (Header, Visitenkarte). Mindestgröße: 32 px Höhe für Lesbarkeit.</p>
+
+    <div class="grid cols-3 mt-2">
+      <div class="logo-card"><img src="assets/logo.svg" alt="" /></div>
+      <div class="logo-card orange"><img src="assets/logo.svg" alt="" /></div>
+      <div class="logo-card dark"><img src="assets/logo.svg" alt="" /></div>
+    </div>
+
+    <div class="logo-card mt-3" style="aspect-ratio: auto; padding: 3rem;">
+      <img src="assets/wordmark.svg" alt="Karpador Fotos Wortmarke" style="max-width: 80%;" />
+    </div>
+
+    <div class="do-dont mt-3">
+      <div class="card do">
+        <h3>✅ Do</h3>
+        <ul style="line-height: 1.8;">
+          <li>Maskottchen auf hellem oder orangenem Hintergrund nutzen</li>
+          <li>Genug Whitespace lassen (mindestens 1× Maskottchen-Höhe)</li>
+          <li>Im Print: SVG-Vektor verwenden, kein PNG</li>
+        </ul>
+      </div>
+      <div class="card dont">
+        <h3>🚫 Don't</h3>
+        <ul style="line-height: 1.8;">
+          <li>Logo strecken, drehen über 15° oder neu einfärben</li>
+          <li>Auf grellem Pink oder Türkis platzieren (Kontrast leidet)</li>
+          <li>Wortmarke ohne Maskottchen-Recall in Header verwenden</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR -->
+<section class="section-aqua">
+  <div class="container">
+    <span class="eyebrow">02 · Farbpalette</span>
+    <h2>Knall-Orange trifft Aqua-Cool</h2>
+    <p class="lead">Orange ist Markenkern. Yellow & Pink für Akzente, Aqua für Beruhigung, Cream als Hintergrund, Ink für Text & Outlines.</p>
+
+    <div class="grid cols-4 mt-2">
+      <div class="swatch"><div class="top" style="background:#FF7A1A"></div><div class="meta"><b>Karpador Orange</b><code>#FF7A1A</code></div></div>
+      <div class="swatch"><div class="top" style="background:#E85D04"></div><div class="meta"><b>Deep Orange</b><code>#E85D04</code></div></div>
+      <div class="swatch"><div class="top" style="background:#FFD23F"></div><div class="meta"><b>Sun Yellow</b><code>#FFD23F</code></div></div>
+      <div class="swatch"><div class="top" style="background:#FF6B9D"></div><div class="meta"><b>Pop Pink</b><code>#FF6B9D</code></div></div>
+      <div class="swatch"><div class="top" style="background:#4ECDC4"></div><div class="meta"><b>Aqua</b><code>#4ECDC4</code></div></div>
+      <div class="swatch"><div class="top" style="background:#FFF8E7"></div><div class="meta"><b>Cream</b><code>#FFF8E7</code></div></div>
+      <div class="swatch"><div class="top" style="background:#1A1B3A"></div><div class="meta"><b>Ink</b><code>#1A1B3A</code></div></div>
+      <div class="swatch"><div class="top" style="background:#FFFBF0; border-bottom:1px solid #eee;"></div><div class="meta"><b>Paper</b><code>#FFFBF0</code></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPO -->
+<section>
+  <div class="container">
+    <span class="eyebrow">03 · Typografie</span>
+    <h2>Fredoka · Nunito · Caveat</h2>
+
+    <div class="type-row mt-2">
+      <div class="meta">
+        <b style="font-family: 'Fredoka';">Fredoka</b>
+        <code>Display · Headlines</code><br/>
+        <code>700 / 600</code>
+      </div>
+      <div class="demo" style="font-family: 'Fredoka'; font-weight: 700;">
+        Live-Foto-Druck auf der Con
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="meta">
+        <b style="font-family: 'Nunito';">Nunito</b>
+        <code>Body · Fließtext</code><br/>
+        <code>400 / 600 / 700</code>
+      </div>
+      <div class="demo" style="font-family: 'Nunito'; font-weight: 400; font-size: 1.1rem;">
+        Wir laufen über die Anime Convention, schießen euer Foto und drücken es euch warm aus dem Drucker in die Hand.
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="meta">
+        <b style="font-family: 'Caveat';">Caveat</b>
+        <code>Hand · Akzent</code><br/>
+        <code>700</code>
+      </div>
+      <div class="demo" style="font-family: 'Caveat'; font-weight: 700; color: var(--orange-deep); font-size: 2.2rem;">
+        Hey, *klick* — Spende was du magst ♥
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="section-orange">
+  <div class="container">
+    <span class="eyebrow">04 · Tone of Voice</span>
+    <h2>Wie wir schreiben</h2>
+    <div class="grid cols-3 mt-2">
+      <div class="card">
+        <h3>🐟 Persönlich</h3>
+        <p>Wir-Form, direkt, mit Augenzwinkern. Keine Werbe-Sprache, keine Floskeln.</p>
+      </div>
+      <div class="card">
+        <h3>🎌 Anime-vertraut</h3>
+        <p>Otaku-Sprache wo passend (Cosplay, Con, Halle 7) — aber so, dass auch Eltern und Newbies mitkommen.</p>
+      </div>
+      <div class="card">
+        <h3>💛 Wertschätzend</h3>
+        <p>Spenden sind freiwillig, Cosplay ist erlaubt-aber-egal, jeder ist willkommen. Niemand wird gedrängt.</p>
+      </div>
+    </div>
+
+    <div class="panel mt-3">
+      <h3>Wortschatz-Kit</h3>
+      <p><strong>Verwende:</strong> *klick*, Bauchladen, Karpador-Crew, Live-Druck, Halle 7, Cosplay, „Hey!", Spendensparschwein</p>
+      <p><strong>Vermeide:</strong> „Service", „Kunde", „erwerben", „buchen Sie", förmliches „Sie"</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">05 · Assets</span>
+      <h2>Logo-Downloads</h2>
+    </div>
+    <div class="grid cols-3">
+      <a class="card" href="assets/logo.svg" download>
+        <h3>📥 Maskottchen SVG</h3>
+        <p>Vektor · transparent · für Print & Web</p>
+      </a>
+      <a class="card" href="assets/wordmark.svg" download>
+        <h3>📥 Wortmarke SVG</h3>
+        <p>Logo + „KARPADOR FOTOS"</p>
+      </a>
+      <a class="card" href="assets/favicon.svg" download>
+        <h3>📥 Favicon SVG</h3>
+        <p>64×64 Mini-Variante</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="assets/favicon.svg" alt="" />
+          <span class="brand-text"><span>Karpador</span><span>F O T O S</span></span>
+        </a>
+        <p style="margin-top:1rem; max-width: 36ch;">Live-Foto-Druck auf Anime Conventions in DACH.</p>
+      </div>
+      <div><h4>Seiten</h4><ul style="list-style:none; padding:0; margin:0; line-height:2;">
+        <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="spenden.html">Spenden</a></li>
+      </ul></div>
+      <div><h4>Crew</h4><ul style="list-style:none; padding:0; margin:0; line-height:2;">
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul></div>
+      <div><h4>Folgen</h4><ul style="list-style:none; padding:0; margin:0; line-height:2;">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="mailto:hallo@karpador-fotos.de">E-Mail</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Karpador Fotos · Made with ♥ & Druckertinte</span>
+      <span>Fan-Projekt. Karpador/Magikarp © Nintendo/Game Freak.</span>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

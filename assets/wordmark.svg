@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-label="Karpador Fotos">
+  <defs>
+    <radialGradient id="wBody" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="60%" stop-color="#FF7A1A"/>
+      <stop offset="100%" stop-color="#E85D04"/>
+    </radialGradient>
+    <linearGradient id="wFin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="100%" stop-color="#FFD23F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mascot, reused -->
+  <g transform="translate(0 0)">
+    <path d="M180 88 L212 60 L208 110 L212 158 L180 132 Z" fill="url(#wFin)" stroke="#1A1B3A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M30 110 C 30 56, 90 30, 130 38 C 175 46, 196 76, 196 110 C 196 144, 175 174, 130 182 C 90 190, 30 164, 30 110 Z" fill="url(#wBody)" stroke="#1A1B3A" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M50 138 C 70 168, 130 178, 170 152 C 168 168, 140 184, 110 184 C 80 184, 56 172, 50 138 Z" fill="#FFF8E7" stroke="#1A1B3A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M70 44 L 86 14 L 100 38 L 116 10 L 130 36 L 146 16 L 152 52 Z" fill="url(#wFin)" stroke="#1A1B3A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M48 116 C 28 124, 24 144, 36 156" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/>
+    <ellipse cx="46" cy="112" rx="14" ry="11" fill="#FF6B9D" stroke="#1A1B3A" stroke-width="4"/>
+    <circle cx="118" cy="96" r="30" fill="#FFFFFF" stroke="#1A1B3A" stroke-width="5"/>
+    <circle cx="118" cy="96" r="20" fill="#1A1B3A"/>
+    <circle cx="118" cy="96" r="8" fill="#FF7A1A"/>
+    <circle cx="118" cy="96" r="4" fill="#FFE066"/>
+    <circle cx="115" cy="93" r="2.4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g font-family="Fredoka, 'Trebuchet MS', sans-serif" font-weight="700">
+    <text x="240" y="110" font-size="62" fill="#1A1B3A" letter-spacing="-1">KARPADOR</text>
+    <text x="240" y="170" font-size="48" fill="#FF7A1A" letter-spacing="6">F O T O S</text>
+    <!-- Underline dash -->
+    <rect x="240" y="120" width="220" height="6" rx="3" fill="#FFD23F"/>
+  </g>
+</svg>
