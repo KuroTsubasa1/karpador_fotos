@@ -3,19 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Visitenkarte — Karpador Fotos (Druckansicht)</title>
+  <title>Visitenkarte — 3D Print Shop Harm (Druckansicht)</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* === Card spec: 85 x 55 mm (Standard EU), 3mm bleed === */
-    :root {
-      --card-w: 85mm;
-      --card-h: 55mm;
-    }
-
+    /* === Card spec: 85 x 55 mm === */
     body { background: #ECECEC; }
     .screen-wrap { padding: 2rem 1rem; }
     .screen-wrap .container { max-width: 980px; }
@@ -29,63 +24,65 @@
     @media (max-width: 760px) { .card-pair { grid-template-columns: 1fr; } }
 
     .biz {
-      width: var(--card-w);
-      height: var(--card-h);
-      background: var(--cream);
+      width: 85mm; height: 55mm;
       border-radius: 4mm;
-      box-shadow: 0 12px 30px rgba(0,0,0,.18);
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
       position: relative;
       overflow: hidden;
-      color: var(--ink);
       font-family: var(--font-body);
     }
 
-    /* --- FRONT --- */
+    /* --- FRONT (dark) --- */
     .biz.front {
       background:
-        radial-gradient(circle at 88% 12%, rgba(255,210,63,.7), transparent 35%),
-        radial-gradient(circle at 12% 88%, rgba(255,107,157,.5), transparent 40%),
-        linear-gradient(135deg, #FFB347, #FF7A1A);
+        radial-gradient(circle at 85% 18%, rgba(109,175,70,.18), transparent 45%),
+        radial-gradient(circle at 12% 92%, rgba(109,175,70,.10), transparent 50%),
+        linear-gradient(135deg, #1A1B3A 0%, #25264F 60%, #1A1B3A 100%);
+      color: #E5E6F0;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: auto 1fr;
       align-items: center;
-      padding: 5mm;
+      gap: 4mm;
+      padding: 5mm 6mm;
     }
-    .biz.front .mascot {
-      width: 32mm; height: 32mm;
-      margin: auto;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,.2));
+    .biz.front .logo {
+      width: 35mm; height: 35mm;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
     }
+    .biz.front .logo img { width: 100%; height: 100%; display: block; }
     .biz.front .word {
-      font-family: var(--font-display);
-      color: var(--ink);
+      display: flex; flex-direction: column; gap: 2mm;
     }
-    .biz.front .word .k {
-      font-size: 7mm; font-weight: 700; letter-spacing: -.3mm;
-      line-height: 1; margin: 0 0 1mm;
+    .biz.front .word .slogan {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 3mm; line-height: 1.25;
+      color: #fff;
     }
-    .biz.front .word .f {
-      font-size: 4mm; letter-spacing: 1.5mm; font-weight: 600;
-      color: var(--ink);
+    .biz.front .word .accent {
+      color: var(--lime-light);
     }
-    .biz.front .word .tag {
-      display: inline-block;
-      font-size: 2.6mm; font-family: var(--font-hand);
-      background: var(--ink); color: var(--yellow);
-      padding: 1mm 2.5mm; border-radius: 999px;
-      margin-top: 2mm;
+    .biz.front .word .url {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 3.4mm; letter-spacing: 0.1mm;
+      color: var(--lime-light);
+    }
+    .biz.front .word .city {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: 2.2mm; letter-spacing: 1.5mm;
+      color: #9897b8;
+      text-transform: uppercase;
     }
 
-    /* --- BACK --- */
+    /* --- BACK (cream + lime accent) --- */
     .biz.back {
-      background:
-        radial-gradient(circle at 90% 110%, rgba(78,205,196,.18), transparent 50%),
-        var(--cream);
+      background: var(--cream);
+      color: var(--ink);
       padding: 5mm 6mm;
       display: grid;
       grid-template-columns: 1fr auto;
       grid-template-rows: auto 1fr auto;
       gap: 1.5mm;
+      border-top: 1.5mm solid var(--lime);
     }
     .biz.back .head {
       grid-column: 1 / -1;
@@ -95,21 +92,26 @@
     }
     .biz.back .head img { width: 8mm; height: 8mm; }
     .biz.back .head .t {
-      font-family: var(--font-display); font-weight: 700; font-size: 4mm; color: var(--ink); line-height: 1;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 4mm; color: var(--ink); line-height: 1;
     }
     .biz.back .head .s {
       font-family: var(--font-display); font-size: 1.9mm; letter-spacing: 0.3mm;
-      color: var(--orange-deep);
+      color: var(--lime-deep);
       white-space: nowrap;
     }
+
     .biz.back .lines {
-      font-size: 2.7mm; line-height: 1.45;
+      font-size: 2.6mm; line-height: 1.45;
       display: grid; gap: 0.8mm;
       align-self: center;
     }
-    .biz.back .lines b { font-family: var(--font-display); font-weight: 700; }
-    .biz.back .lines .row { display: grid; grid-template-columns: 5mm 1fr; align-items: center; gap: 1mm; }
+    .biz.back .lines .row {
+      display: grid; grid-template-columns: 5mm 1fr;
+      align-items: center; gap: 1mm;
+    }
     .biz.back .lines .row svg { width: 3.5mm; height: 3.5mm; }
+
     .biz.back .qr {
       grid-row: 2 / span 2;
       width: 22mm; height: 22mm;
@@ -126,23 +128,24 @@
       transform: translate(-50%, -50%);
       width: 5mm; height: 5mm;
       background: #fff; border-radius: 50%;
-      padding: 0.5mm;
+      padding: 0.4mm;
       box-shadow: 0 0 0 0.3mm #fff;
     }
-    .biz.back .qr .qr-logo img { width: 100%; height: 100%; display: block; }
-    .biz.back .footline {
+    .biz.back .qr .qr-logo img { width: 100%; height: 100%; display: block; border-radius: 50%; }
+
+    .biz.back .services {
       grid-column: 1 / -1;
-      font-family: var(--font-hand); font-size: 3.5mm;
-      color: var(--orange-deep);
-      text-align: center;
-      line-height: 1.1;
+      display: flex; gap: 1.2mm; justify-content: center; flex-wrap: nowrap;
+      margin-top: 0.5mm;
     }
-    .biz.back .footline .dps {
-      display: block;
+    .biz.back .services .tag {
       font-family: var(--font-display); font-weight: 600;
-      font-size: 2.1mm; letter-spacing: 0.2mm;
+      font-size: 1.9mm; letter-spacing: 0.2mm;
+      padding: 0.5mm 1.6mm;
+      border-radius: 999px;
+      background: rgba(109,175,70,.15);
       color: var(--lime-deep);
-      margin-top: 0.6mm;
+      border: 0.2mm solid rgba(109,175,70,.4);
     }
 
     .label {
@@ -158,7 +161,7 @@
     }
     .print-bar button {
       font: inherit; font-family: var(--font-display); font-weight: 600;
-      background: var(--orange); color: var(--ink);
+      background: var(--lime); color: #fff;
       border: 3px solid var(--ink); padding: .8rem 1.4rem;
       border-radius: 999px; cursor: pointer;
       box-shadow: 4px 4px 0 var(--ink);
@@ -180,8 +183,8 @@
         grid-template-columns: repeat(2, 85mm);
         grid-template-rows: repeat(5, 55mm);
         gap: 0;
-        justify-content: center;   /* horizontal centering */
-        align-content: center;     /* vertical centering */
+        justify-content: center;
+        align-content: center;
         width: 210mm;
         height: 297mm;
         margin: 0;
@@ -190,14 +193,14 @@
       }
       .print-sheet.back-sheet {
         page-break-before: always;
-        direction: rtl; /* mirror columns for duplex long-edge flip */
+        direction: rtl;
       }
       .print-sheet .biz {
         border-radius: 0;
         box-shadow: none;
         width: 85mm; height: 55mm;
         margin: 0;
-        direction: ltr; /* reset for back-sheet rtl context */
+        direction: ltr;
         page-break-inside: avoid;
       }
     }
@@ -229,20 +232,25 @@
 <div class="screen-wrap">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Druck-Vorlage</span>
-      <h1 style="font-size: 2.5rem;">Visitenkarte (85 × 55 mm)</h1>
-      <p class="lead" style="margin: 0 auto;">Vorderseite & Rückseite im Originalformat. Über „Drucken" als 1:1-PDF speichern oder direkt drucken. Auf 350g Karton mit Sublimations- oder Offsetdruck wirkt's am besten.</p>
+      <span class="eyebrow" style="background: rgba(109,175,70,.15); color: var(--lime-deep);">Mutterfirma · Druck-Vorlage</span>
+      <h1 style="font-size: 2.5rem;">Visitenkarte 3D Print Shop Harm (85 × 55 mm)</h1>
+      <p class="lead" style="margin: 0 auto;">Eigene Karte für den 3D-Druck-Shop. Selbe Druckmechanik wie die Karpador-Karte: A4-Bogen mit 10 Karten, Duplex „Lange Kante umblättern".</p>
     </div>
 
     <div class="card-pair">
       <div>
         <p class="label">Vorderseite</p>
         <div class="biz front">
-          <img class="mascot" src="assets/logo.svg" alt="" />
+          <div class="logo">
+            <picture>
+              <source srcset="assets/3dps-logo.webp" type="image/webp">
+              <img src="assets/3dps-logo.png" alt="3D Print Shop Harm" />
+            </picture>
+          </div>
           <div class="word">
-            <p class="k">KARPADOR</p>
-            <p class="f">F O T O S</p>
-            <span class="tag">*klick* &amp; ausdrucken</span>
+            <span class="slogan">Ihre <span class="accent">innovative Lösung</span> für professionellen 3D-Druck</span>
+            <span class="url">3dps.space</span>
+            <span class="city">Eutin · DE</span>
           </div>
         </div>
       </div>
@@ -251,30 +259,40 @@
         <p class="label">Rückseite</p>
         <div class="biz back">
           <div class="head">
-            <img src="assets/favicon.svg" alt=""/>
+            <picture>
+              <source srcset="assets/3dps-logo.webp" type="image/webp">
+              <img src="assets/3dps-logo.png" alt=""/>
+            </picture>
             <div>
-              <div class="t">Karpador Fotos</div>
-              <div class="s">L I V E · F O T O · D R U C K</div>
+              <div class="t">3D Print Shop Harm</div>
+              <div class="s">F D M · R E S I N · C A D · 3 D - S C A N</div>
             </div>
           </div>
 
           <div class="lines">
             <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/></svg> service@3dps.space</div>
-            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg> karpador-fotos.de</div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg> 3dps.space</div>
             <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#1A1B3A"/></svg> @3d.print.shop.harm</div>
-            <div class="row"><svg viewBox="0 0 24 24" fill="#FF6B9D" stroke="#1A1B3A" stroke-width="2"><path d="M12 21s-7-4.5-9-9c-1.5-3.5 1-7 4.5-7 2 0 3.5 1.5 4.5 3 1-1.5 2.5-3 4.5-3 3.5 0 6 3.5 4.5 7-2 4.5-9 9-9 9z"/></svg> Spende was du magst</div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#6DAF46" stroke-width="2.5"><path d="M12 2 C 8 8, 5 12, 5 16 A 7 7 0 0 0 19 16 C 19 12, 16 8, 12 2 Z"/></svg> Eutin · Deutschland</div>
           </div>
 
-          <div class="qr" aria-label="QR-Code zu karpador-fotos.de">
+          <div class="qr" aria-label="QR-Code zu 3dps.space">
             <img class="qr-img"
-                 src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fkarpador-fotos.de&size=600x600&margin=0&color=1A1B3A&bgcolor=FFFFFF&ecc=H&qzone=1&format=svg"
-                 alt="QR-Code zu karpador-fotos.de" />
-            <span class="qr-logo"><img src="assets/favicon.svg" alt="" /></span>
+                 src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F3dps.space&size=600x600&margin=0&color=1A1B3A&bgcolor=FFFFFF&ecc=H&qzone=1&format=svg"
+                 alt="QR-Code zu 3dps.space" />
+            <span class="qr-logo">
+              <picture>
+                <source srcset="assets/3dps-logo.webp" type="image/webp">
+                <img src="assets/3dps-logo.png" alt="" />
+              </picture>
+            </span>
           </div>
 
-          <div class="footline">
-            Lass dich auf der Con knipsen ♥
-            <span class="dps">Ein Projekt von 3dps.space</span>
+          <div class="services">
+            <span class="tag">FDM</span>
+            <span class="tag">Resin</span>
+            <span class="tag">CAD</span>
+            <span class="tag">3D-Scan</span>
           </div>
         </div>
       </div>
@@ -283,12 +301,12 @@
     <div class="print-bar">
       <p style="margin: 0 0 .4rem;"><strong>Druck-Layout:</strong> A4 Hochformat · 10 Karten pro Seite · Seite 1 = Vorderseiten, Seite 2 = Rückseiten (gespiegelt für Duplex)</p>
       <p style="margin: 0 0 .8rem; font-size: .92rem; color: var(--ink-soft);">
-        Im Druckdialog: A4, „Tatsächliche Größe" (100 %, kein Skalieren), beidseitig „Lange Kante umblättern".
-        Auf 350 g Karton, danach an den Schnittmarken zuschneiden.
+        Druckdialog: A4, „Tatsächliche Größe" (100 %, kein Skalieren), beidseitig „Lange Kante umblättern".
+        Auf 350 g Karton, danach zuschneiden.
       </p>
       <button onclick="window.print()">Drucken / als PDF speichern</button>
       <p style="margin: 1rem 0 0; font-size: .9rem;">
-        <a href="business-card-3dps.html">3DPS-Visitenkarte ansehen →</a>
+        <a href="business-card.html">← Karpador-Visitenkarte ansehen</a>
       </p>
     </div>
 
@@ -301,7 +319,6 @@
 
 <script src="script.js"></script>
 <script>
-  // Clone the on-screen card into 10x for the A4 print layout
   (function () {
     const front = document.querySelector('.card-pair .biz.front');
     const back  = document.querySelector('.card-pair .biz.back');
