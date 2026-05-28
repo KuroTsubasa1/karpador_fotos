@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How it works — A3-Druckvorlage · Karpador Fotos</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* === A4 landscape sheets (297 × 210 mm), 2 stacked = A3 portrait (297 × 420 mm) === */
+
+    body { background: #ECECEC; }
+    .screen-wrap { padding: 2rem 1rem; }
+    .screen-wrap .container { max-width: 980px; }
+
+    .canvas-preview {
+      --scale: 0.42;
+      width: 100%;
+      max-width: 500px;
+      margin: 2rem auto;
+      background: #fff;
+      border: 4px solid var(--ink);
+      border-radius: 6px;
+      padding: 14px;
+      box-sizing: border-box;
+      box-shadow: 0 30px 60px rgba(26,27,58,.20);
+      position: relative;
+    }
+    .canvas-preview::before {
+      content: 'Druckvorlage · 3 × A4 Querformat';
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--ink); color: #fff;
+      font-family: var(--font-display); font-weight: 600; font-size: .75rem;
+      padding: 4px 12px; border-radius: 999px; letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .canvas-preview .scaled-frame {
+      width: 100%;
+      aspect-ratio: 297 / 630;
+      position: relative;
+      overflow: hidden;
+    }
+    .canvas-preview .sheet-wrap {
+      position: absolute;
+      top: 0; left: 0;
+      width: 297mm;
+      height: 630mm;
+      transform: scale(var(--scale));
+      transform-origin: top left;
+    }
+
+    .sheet {
+      width: 297mm; height: 210mm;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      color: var(--ink);
+      font-family: var(--font-body);
+      page-break-after: always;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+    }
+    .sheet:last-child { page-break-after: auto; }
+
+    /* === SHEET 1: HEADER === */
+    .sheet.header {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      padding: 14mm 18mm 12mm;
+      gap: 6mm;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(255,210,63,.35), transparent 45%),
+        radial-gradient(circle at 12% 88%, rgba(255,107,157,.20), transparent 45%),
+        var(--cream);
+    }
+    .sheet.header .title-row { text-align: center; }
+    .sheet.header h1 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 55mm; line-height: .9;
+      letter-spacing: -1.5mm;
+      margin: 0;
+      color: var(--ink);
+    }
+    .sheet.header h1 .accent {
+      color: var(--orange);
+      display: block;
+    }
+    .sheet.header .bottom-row {
+      display: grid;
+      grid-template-columns: 70mm 1fr;
+      align-items: center;
+      gap: 10mm;
+    }
+    .sheet.header .mascot {
+      width: 70mm; height: 70mm;
+      filter: drop-shadow(0 4mm 8mm rgba(232,93,4,.25));
+    }
+    .sheet.header .hand {
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 14mm; line-height: 1;
+      color: var(--orange-deep);
+      transform: rotate(-2deg);
+      display: inline-block;
+      margin-bottom: 3mm;
+    }
+    .sheet.header .subtitle {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 8mm; letter-spacing: 1.5mm;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+    .sheet.header .subtitle .dot { color: var(--orange); }
+    .sheet.header .ribbon {
+      position: absolute;
+      top: 8mm; right: -10mm;
+      background: var(--pink); color: #fff;
+      padding: 3mm 14mm 3mm 8mm;
+      font-family: var(--font-hand); font-weight: 700; font-size: 8mm;
+      transform: rotate(8deg);
+      border: 1.2mm solid var(--ink);
+      box-shadow: 2mm 2mm 0 var(--ink);
+      z-index: 3;
+    }
+
+    /* === SHEET 2: 4 STEPS === */
+    .sheet.steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 14mm 10mm 12mm;
+      gap: 6mm;
+      align-items: start;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+      padding-top: 14mm;
+    }
+    .step .num {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 22mm; height: 22mm;
+      background: var(--orange); color: #fff;
+      border: 1.4mm solid var(--ink);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 13mm; line-height: 1;
+      box-shadow: 1.6mm 1.6mm 0 var(--ink);
+      z-index: 2;
+    }
+    .step .icon {
+      width: 56mm; height: 56mm;
+      border-radius: 18mm;
+      border: 1.4mm solid var(--ink);
+      display: grid; place-items: center;
+      margin: 0 auto 6mm;
+      box-shadow: 2mm 2mm 0 var(--ink);
+    }
+    .step:nth-child(1) .icon { background: rgba(78,205,196,.25); }
+    .step:nth-child(2) .icon { background: rgba(255,210,63,.45); }
+    .step:nth-child(3) .icon { background: rgba(255,179,71,.45); }
+    .step:nth-child(4) .icon { background: rgba(255,107,157,.30); }
+    .step .icon img {
+      width: 38mm; height: 38mm;
+    }
+    .step h3 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 8mm; line-height: 1.1;
+      margin: 0 0 3mm;
+      color: var(--ink);
+    }
+    .step p {
+      font-size: 4.4mm; line-height: 1.35;
+      margin: 0;
+      color: var(--ink-soft);
+    }
+    .step .accent-word { color: var(--orange-deep); font-weight: 700; }
+
+    /* Small sub-line at very bottom of steps sheet */
+    .sheet.steps .footline {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 11mm; line-height: 1;
+      color: var(--orange-deep);
+      margin-top: 4mm;
+    }
+
+    /* === SHEET 3: JAPAN GOAL === */
+    .sheet.japan {
+      display: grid;
+      grid-template-columns: 1fr 115mm;
+      align-items: center;
+      padding: 14mm 18mm;
+      gap: 10mm;
+      background:
+        radial-gradient(circle at 90% 50%, rgba(229,57,53,.08), transparent 55%),
+        var(--cream);
+    }
+    .sheet.japan .japan-left {
+      display: flex; flex-direction: column;
+      gap: 5mm;
+    }
+    .sheet.japan .eyebrow {
+      display: inline-block; align-self: flex-start;
+      background: #D32F2F; color: #fff;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 5mm; letter-spacing: 1.2mm;
+      padding: 2mm 7mm;
+      border-radius: 999px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .sheet.japan h1 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 24mm; line-height: .95;
+      letter-spacing: -.8mm;
+      margin: 0;
+      color: var(--ink);
+    }
+    .sheet.japan h1 .accent {
+      color: #D32F2F;
+      display: block;
+    }
+    .sheet.japan .lead {
+      font-size: 5.8mm; line-height: 1.35;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 145mm;
+    }
+    .sheet.japan .goal-tags {
+      display: flex; flex-wrap: wrap; gap: 3mm;
+    }
+    .sheet.japan .goal-tag {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 5mm;
+      padding: 1.5mm 5mm;
+      background: var(--yellow);
+      border: 0.8mm solid var(--ink);
+      border-radius: 999px;
+      color: var(--ink);
+      box-shadow: 1mm 1mm 0 var(--ink);
+    }
+    .sheet.japan .japan-right {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 100%;
+    }
+    .sheet.japan .japan-sun {
+      width: 115mm; height: 115mm;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FF5252 0%, #D32F2F 70%, #B71C1C 100%);
+      display: grid; place-items: center;
+      border: 1.6mm solid var(--ink);
+      box-shadow: 4mm 4mm 0 var(--ink);
+    }
+    .sheet.japan .japan-sun img {
+      width: 95mm; height: 95mm;
+      filter: drop-shadow(0 2mm 4mm rgba(0,0,0,.35));
+    }
+    .sheet.japan .hand-thanks {
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 12mm; color: var(--orange-deep);
+      position: absolute;
+      bottom: 0mm; right: -4mm;
+      background: var(--yellow);
+      padding: 1mm 8mm;
+      border: 1.2mm solid var(--ink);
+      border-radius: 999px;
+      box-shadow: 2mm 2mm 0 var(--ink);
+      transform: rotate(8deg);
+    }
+    .sheet.japan .a3-cut-marker {
+      position: absolute;
+      top: -3mm; left: 0; right: 0;
+      height: 0;
+      border-top: 0.8mm dashed rgba(26,27,58,.35);
+      pointer-events: none;
+    }
+    .sheet.japan .a3-cut-marker::after {
+      content: '✂ Ende der A3-Leinwand — Bogen 3 separat aufkleben';
+      position: absolute;
+      top: -3mm; left: 50%; transform: translateX(-50%);
+      background: var(--cream); color: var(--ink-soft);
+      font-family: var(--font-display); font-size: 3.2mm; font-weight: 600;
+      padding: 0 4mm;
+      white-space: nowrap;
+    }
+    /* Hide the cut marker when printing (it's only a screen guide) */
+    @media print {
+      .sheet.japan .a3-cut-marker { display: none !important; }
+    }
+
+    .sheet-label {
+      text-align: center; font-family: var(--font-display); font-weight: 600;
+      color: var(--ink-soft); margin: 1.5rem auto .8rem;
+      font-size: .95rem;
+    }
+
+    .print-bar {
+      text-align: center;
+      padding: 1.2rem; background: var(--paper);
+      border: 3px solid var(--ink); border-radius: var(--radius);
+      max-width: 720px; margin: 2rem auto;
+    }
+    .print-bar button {
+      font: inherit; font-family: var(--font-display); font-weight: 600;
+      background: var(--orange); color: var(--ink);
+      border: 3px solid var(--ink); padding: .9rem 1.5rem;
+      border-radius: 999px; cursor: pointer;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .print-bar button:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+
+    /* PRINT: A4 landscape, 2 pages */
+    @media print {
+      @page { size: A4 landscape; margin: 0; }
+
+      /* preserve colors/backgrounds across all elements */
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html, body {
+        margin: 0; padding: 0;
+        background: white !important;
+        background-image: none !important;
+        width: auto;
+      }
+
+      .nav, .footer,
+      .screen-wrap > .container > .section-head,
+      .canvas-preview::before, .sheet-label, .print-bar,
+      .screen-wrap > .container > .footer { display: none !important; }
+
+      .screen-wrap, .screen-wrap > .container {
+        padding: 0 !important; margin: 0 !important;
+        max-width: none !important; width: auto !important;
+      }
+
+      .canvas-preview {
+        width: 297mm !important; max-width: none !important;
+        margin: 0 !important; padding: 0 !important;
+        border: none !important; box-shadow: none !important;
+        border-radius: 0 !important; background: none !important;
+        position: static !important;
+      }
+      .canvas-preview .scaled-frame {
+        width: 297mm !important; height: auto !important;
+        aspect-ratio: auto !important;
+        overflow: visible !important; position: static !important;
+        display: block !important;
+      }
+      .canvas-preview .sheet-wrap {
+        position: static !important;
+        transform: none !important;
+        width: 297mm !important; height: auto !important;
+        margin: 0 !important;
+        display: block !important;
+      }
+      .sheet {
+        width: 297mm; height: 210mm;
+        margin: 0; box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/favicon.svg" alt="" />
+      <span class="brand-text"><span>Karpador</span><span>F O T O S</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menü"><span></span></button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="spenden.html">Spenden</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="screen-wrap">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Druck-Vorlage Bauchladen</span>
+      <h1 style="font-size: 2.5rem;">„How it works"-Schild (A3-Leinwand)</h1>
+      <p class="lead" style="margin: 0 auto;">
+        Drei A4-Querformat-Bögen für den Bauchladen. <strong>Bogen 1 + 2 füllen exakt die A3-Leinwand</strong> (297 × 420 mm hochkant) — oben Header + Maskottchen, unten die 4 Schritte.
+        <strong>Bogen 3</strong> (Japan-Spendenziel) ist ein Zusatz, den ihr separat aufkleben könnt — seitlich am Bauchladen, an einer zweiten Leinwand oder als Schnitt-und-Klick-Schild. Bei „Drucken" kommen drei A4-Seiten raus.
+      </p>
+    </div>
+
+    <div class="canvas-preview">
+      <div class="scaled-frame">
+        <div class="sheet-wrap">
+        <!-- SHEET 1: HEADER -->
+        <div class="sheet header">
+          <div class="title-row">
+            <h1>HOW IT <span class="accent">WORKS</span></h1>
+          </div>
+          <div class="bottom-row">
+            <img class="mascot" src="assets/logo.svg" alt="Karpador Maskottchen" />
+            <div class="title-block">
+              <span class="hand">*klick* — und schon hast du's in der Hand</span>
+              <div class="subtitle">Foto<span class="dot"> · </span>Druck<span class="dot"> · </span>Spende<span class="dot"> · </span>Karpador</div>
+            </div>
+          </div>
+          <div class="ribbon">Spende was du magst ♥</div>
+        </div>
+
+        <!-- SHEET 2: 4 STEPS -->
+        <div class="sheet steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div class="icon"><img src="assets/icon-fish.svg" alt=""/></div>
+            <h3>Karpador entdecken</h3>
+            <p>Zwei <span class="accent-word">orange Overalls</span> mit Magikarp-Mützen. Wir laufen durch alle Hallen.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div class="icon"><img src="assets/icon-camera.svg" alt=""/></div>
+            <h3>Foto von euch</h3>
+            <p>Pose machen, Cosplay präsentieren. Wir kümmern uns um <span class="accent-word">Licht & Bild</span>.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div class="icon"><img src="assets/icon-print.svg" alt=""/></div>
+            <h3>Ausdruck vor Ort</h3>
+            <p>Der Drucker rattert los — nach <span class="accent-word">~60 Sekunden</span> habt ihr es in der Hand.</p>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <div class="icon"><img src="assets/icon-heart.svg" alt=""/></div>
+            <h3>Spende (freiwillig)</h3>
+            <p>Wirft, was ihr übrig habt, in den Bauchladen. <span class="accent-word">Ziel 2026: Japan!</span></p>
+          </div>
+          <div class="footline">karpador-fotos.de</div>
+        </div>
+
+        <!-- SHEET 3: JAPAN GOAL -->
+        <div class="sheet japan">
+          <div class="a3-cut-marker"></div>
+          <div class="japan-left">
+            <span class="eyebrow">Spendenziel 2026</span>
+            <h1>Karpador möchte<span class="accent">nach Japan</span></h1>
+            <p class="lead">Im November fliegen wir nach Tokio, Osaka, Akihabara — drei Wochen Anime-Land, finanziert aus euren Spenden.</p>
+            <div class="goal-tags">
+              <span class="goal-tag">Tokio</span>
+              <span class="goal-tag">Osaka</span>
+              <span class="goal-tag">Akihabara</span>
+              <span class="goal-tag">Pokémon Center</span>
+            </div>
+          </div>
+          <div class="japan-right">
+            <div class="japan-sun">
+              <img src="assets/logo.svg" alt="" />
+            </div>
+            <div class="hand-thanks">Danke ♥</div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <p class="sheet-label">
+      Vorschau auf ~32 % verkleinert. Realgröße: A3 hochkant (2 × A4 Querformat übereinander).
+    </p>
+
+    <div class="print-bar">
+      <p style="margin: 0 0 .5rem;"><strong>Druck-Layout:</strong> 3 Seiten A4 Querformat · Header, 4 Schritte, Japan-Spendenziel</p>
+      <p style="margin: 0 0 1rem; font-size: .92rem; color: var(--ink-soft);">
+        Druckdialog: <strong>A4, Querformat, „Tatsächliche Größe" (100 %)</strong>.
+        Wenn dein Drucker randlos kann → randlos. Sonst die ~5 mm weißen Ränder abschneiden, bevor du die Bögen aufklebst.
+        Empfehlung: 160-200 g Papier (oder dicker), damit's nicht durch den Kleber wellt.
+      </p>
+      <button onclick="window.print()">Alle 3 Bögen drucken / als PDF speichern</button>
+      <p style="margin: 1rem 0 0; font-size: .9rem;">
+        <a href="business-card.html">Visitenkarten ansehen →</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Set --scale dynamically from container width / 297mm (in CSS px)
+  (function () {
+    const MM_TO_PX = 96 / 25.4; // = 3.7795...
+    const TARGET_PX = 297 * MM_TO_PX; // = ~1122.5
+    function updateScale() {
+      document.querySelectorAll('.canvas-preview').forEach(cp => {
+        const frame = cp.querySelector('.scaled-frame');
+        if (!frame) return;
+        const w = frame.clientWidth;
+        if (w > 0) cp.style.setProperty('--scale', (w / TARGET_PX).toFixed(4));
+      });
+    }
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(updateScale);
+      document.querySelectorAll('.canvas-preview .scaled-frame').forEach(el => ro.observe(el));
+    }
+    // Re-check after fonts load (might shift container width)
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateScale);
+  })();
+</script>
+</body>
+</html>
