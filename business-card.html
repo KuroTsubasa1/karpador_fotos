@@ -150,6 +150,119 @@
       color: var(--ink-soft); margin-bottom: .6rem;
     }
 
+    /* === Portrait-Variante (A6 Hochkant 105×148mm) === */
+    .portrait-section {
+      max-width: 980px; margin: 3rem auto 2rem;
+      padding: 1.5rem 1rem 0;
+      border-top: 2px dashed rgba(26,27,58,.15);
+    }
+    .portrait-wrap {
+      display: grid; place-items: center; margin: 1.5rem 0;
+    }
+    .biz-portrait {
+      width: 105mm; height: 148mm;
+      background:
+        radial-gradient(circle at 90% 100%, rgba(78,205,196,.15), transparent 50%),
+        radial-gradient(circle at 10% 0%, rgba(255,210,63,.22), transparent 45%),
+        var(--cream);
+      padding: 7mm 8mm;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto auto auto;
+      gap: 3mm;
+      border-radius: 5mm;
+      color: var(--ink);
+      font-family: var(--font-body);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 14px 36px rgba(0,0,0,.20);
+    }
+    .biz-portrait .bp-head {
+      display: flex; align-items: center; gap: 3mm;
+      border-bottom: .4mm solid rgba(26,27,58,.18);
+      padding-bottom: 2.5mm;
+    }
+    .biz-portrait .bp-head img { width: 11mm; height: 11mm; flex-shrink: 0; }
+    .biz-portrait .bp-head .t {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 5.6mm; line-height: 1;
+      color: var(--ink);
+    }
+    .biz-portrait .bp-head .s {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 2.2mm; letter-spacing: 0.4mm;
+      color: var(--orange-deep);
+      margin-top: 0.8mm;
+    }
+    .biz-portrait .bp-tag {
+      text-align: center;
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 5.5mm; line-height: 1;
+      color: var(--orange-deep);
+      transform: rotate(-1deg);
+    }
+    .biz-portrait .bp-qr {
+      display: grid; place-items: center;
+      align-self: center;
+    }
+    .biz-portrait .bp-qr .qr-frame {
+      width: 60mm; height: 60mm;
+      background: #fff;
+      border: .6mm solid var(--ink);
+      border-radius: 3mm;
+      padding: 1.5mm;
+      display: grid; place-items: center;
+      position: relative;
+    }
+    .biz-portrait .bp-qr .qr-img { width: 100%; height: 100%; display: block; }
+    .biz-portrait .bp-qr .qr-logo {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 12mm; height: 12mm;
+      background: #fff;
+      border-radius: 50%;
+      padding: 0.5mm;
+      box-shadow: 0 0 0 .4mm #fff;
+    }
+    .biz-portrait .bp-qr .qr-logo img { width: 100%; height: 100%; display: block; border-radius: 50%; }
+    .biz-portrait .bp-url {
+      text-align: center;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 5mm; letter-spacing: 0.2mm;
+      color: var(--ink);
+    }
+    .biz-portrait .bp-contact {
+      font-size: 3mm; line-height: 1.45;
+      display: grid; gap: 1.3mm;
+    }
+    .biz-portrait .bp-contact .row {
+      display: grid;
+      grid-template-columns: 4.5mm 1fr;
+      align-items: center;
+      gap: 1.5mm;
+    }
+    .biz-portrait .bp-contact .row svg { width: 3.5mm; height: 3.5mm; }
+    .biz-portrait .bp-foot {
+      text-align: center;
+      border-top: .4mm solid rgba(26,27,58,.15);
+      padding-top: 2mm;
+    }
+    .biz-portrait .bp-foot .cute {
+      font-family: var(--font-hand); font-weight: 700;
+      font-size: 4mm; line-height: 1;
+      color: var(--orange-deep);
+    }
+    .biz-portrait .bp-foot .dps {
+      font-family: var(--font-display); font-weight: 600;
+      font-size: 2.2mm; letter-spacing: 0.2mm;
+      color: var(--lime-deep);
+      margin-top: 0.8mm;
+    }
+
+    /* Hide portrait section when printing — it's a digital-only artifact */
+    @media print {
+      .portrait-section { display: none !important; }
+    }
+
     .print-bar {
       text-align: center;
       padding: 1rem; background: var(--paper);
@@ -287,6 +400,53 @@
       </div>
     </div>
 
+    <!-- Portrait-Variante: A6 Hochformat (105 × 148mm), zum Teilen auf Social / als Postkarte -->
+    <div class="portrait-section">
+      <div class="section-head" style="margin-bottom: .5rem;">
+        <span class="eyebrow">Hochkant-Variante</span>
+        <h2 style="font-size: 1.8rem;">Rückseite als A6-Postkarte / Social-Share</h2>
+        <p class="lead" style="margin: 0 auto;">Portrait-Format, 105 × 148 mm. Gleicher Inhalt wie die Karten-Rückseite, neu arrangiert für Phone-Bildschirme, Instagram-Story oder als kleine Postkarte zum Verteilen.</p>
+      </div>
+      <div class="portrait-wrap">
+        <div class="biz-portrait" id="card-portrait">
+          <div class="bp-head">
+            <img src="assets/favicon.svg" alt="" />
+            <div>
+              <div class="t">Karpador Fotos</div>
+              <div class="s">L I V E · F O T O · D R U C K</div>
+            </div>
+          </div>
+
+          <div class="bp-tag">*klick* — sofort in der Hand!</div>
+
+          <div class="bp-qr">
+            <div class="qr-frame">
+              <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fkarpador-fotos.de&size=600x600&margin=0&color=1A1B3A&bgcolor=FFFFFF&ecc=H&qzone=1&format=svg" alt="QR-Code zu karpador-fotos.de" />
+              <span class="qr-logo">
+                <picture><source srcset="assets/3dps-logo.webp" type="image/webp"><img src="assets/3dps-logo.png" alt="" /></picture>
+              </span>
+            </div>
+          </div>
+
+          <div class="bp-url">karpador-fotos.de</div>
+
+          <div class="bp-contact">
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/></svg> service@3dps.space</div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#1A1B3A"/></svg> @3d.print.shop.harm</div>
+            <div class="row"><svg viewBox="0 0 24 24" fill="#FF6B9D" stroke="#1A1B3A" stroke-width="2"><path d="M12 21s-7-4.5-9-9c-1.5-3.5 1-7 4.5-7 2 0 3.5 1.5 4.5 3 1-1.5 2.5-3 4.5-3 3.5 0 6 3.5 4.5 7-2 4.5-9 9-9 9z"/></svg> Spende was du magst</div>
+          </div>
+
+          <div class="bp-foot">
+            <div class="cute">Lass dich auf der Con knipsen ♥</div>
+            <div class="dps">Ein Projekt von 3dps.space</div>
+          </div>
+        </div>
+      </div>
+      <div class="action-row" style="display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+        <button id="dl-card-portrait" class="dl-btn" style="font: inherit; font-family: var(--font-display); font-weight: 600; background: var(--pink); color: #fff; border: 3px solid var(--ink); padding: .8rem 1.4rem; border-radius: 999px; cursor: pointer; box-shadow: 4px 4px 0 var(--ink);">📥 Hochkant als PNG</button>
+      </div>
+    </div>
+
     <div class="print-bar">
       <p style="margin: 0 0 .4rem;"><strong>Druck-Layout:</strong> A4 Hochformat · 10 Karten pro Seite · Seite 1 = Vorderseiten, Seite 2 = Rückseiten (gespiegelt für Duplex)</p>
       <p style="margin: 0 0 .8rem; font-size: .92rem; color: var(--ink-soft);">
@@ -417,8 +577,9 @@
       });
     }
 
-    setupDownload('dl-card-front', '.card-pair .biz.front', 'karpador-fotos-vorderseite.png');
-    setupDownload('dl-card-back',  '.card-pair .biz.back',  'karpador-fotos-rueckseite.png');
+    setupDownload('dl-card-front',    '.card-pair .biz.front', 'karpador-fotos-vorderseite.png');
+    setupDownload('dl-card-back',     '.card-pair .biz.back',  'karpador-fotos-rueckseite.png');
+    setupDownload('dl-card-portrait', '#card-portrait',        'karpador-fotos-hochkant.png');
   })();
 </script>
 </body>
