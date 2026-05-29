@@ -421,14 +421,17 @@
 
           <div class="bp-qr">
             <div class="qr-frame">
-              <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fkarpador-fotos.de&size=600x600&margin=0&color=1A1B3A&bgcolor=FFFFFF&ecc=H&qzone=1&format=svg" alt="QR-Code zu karpador-fotos.de" />
+              <img class="qr-img"
+                   data-qr-target="https://www.instagram.com/3d.print.shop.harm/"
+                   src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fwww.instagram.com%2F3d.print.shop.harm%2F&size=600x600&margin=0&color=1A1B3A&bgcolor=FFFFFF&ecc=H&qzone=1&format=svg"
+                   alt="QR-Code zu Instagram @3d.print.shop.harm" />
               <span class="qr-logo">
                 <picture><source srcset="assets/3dps-logo.webp" type="image/webp"><img src="assets/3dps-logo.png" alt="" /></picture>
               </span>
             </div>
           </div>
 
-          <div class="bp-url">karpador-fotos.de</div>
+          <div class="bp-url">📷 @3d.print.shop.harm</div>
 
           <div class="bp-contact">
             <div class="row"><svg viewBox="0 0 24 24" fill="none" stroke="#1A1B3A" stroke-width="2.5"><path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/></svg> service@3dps.space</div>
@@ -497,15 +500,15 @@
       console.warn('qrcode-generator lib not loaded — keeping external QR');
       return;
     }
-    try {
-      // Type 0 = auto-detect smallest version, 'H' = highest error correction
-      const qr = qrcode(0, 'H');
-      qr.addData('https://karpador-fotos.de');
+
+    function generateQR(url) {
+      const qr = qrcode(0, 'H');           // Type 0 = auto-detect, 'H' = highest ECC
+      qr.addData(url);
       qr.make();
 
       const modules = qr.getModuleCount();
-      const cellSize = 12;                 // px per module
-      const quietZone = cellSize;          // 1-module margin
+      const cellSize = 12;
+      const quietZone = cellSize;
       const size = modules * cellSize + quietZone * 2;
 
       const canvas = document.createElement('canvas');
@@ -521,13 +524,24 @@
           }
         }
       }
-      const dataUrl = canvas.toDataURL('image/png');
-      document.querySelectorAll('.qr-img').forEach(img => {
-        img.src = dataUrl;
-      });
-    } catch (err) {
-      console.warn('QR local generation failed:', err);
+      return canvas.toDataURL('image/png');
     }
+
+    // Group .qr-img elements by their data-qr-target URL (default: karpador-fotos.de)
+    const byUrl = new Map();
+    document.querySelectorAll('.qr-img').forEach(img => {
+      const url = img.dataset.qrTarget || 'https://karpador-fotos.de';
+      if (!byUrl.has(url)) byUrl.set(url, []);
+      byUrl.get(url).push(img);
+    });
+    byUrl.forEach((imgs, url) => {
+      try {
+        const dataUrl = generateQR(url);
+        imgs.forEach(img => { img.src = dataUrl; });
+      } catch (err) {
+        console.warn('QR generation failed for', url, err);
+      }
+    });
   })();
 </script>
 
