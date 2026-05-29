@@ -431,6 +431,52 @@ textarea { min-height: 140px; resize: vertical; }
 .tag.pink { background: var(--pink); color: #fff; }
 .tag.aqua { background: var(--aqua); color: var(--ink); }
 
+/* ---------- Foto-Wiederfinden CTA ---------- */
+.recover-photo-cta {
+  padding: 1.5rem 0 .5rem;
+}
+.recover-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.4rem 1.8rem;
+  background: linear-gradient(135deg, var(--yellow) 0%, #FFC629 100%);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: 7px 7px 0 var(--ink);
+  position: relative;
+}
+.recover-card .recover-icon {
+  font-size: 3.4rem; line-height: 1;
+  flex-shrink: 0;
+}
+.recover-card .recover-text h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.45rem; line-height: 1.15;
+  margin: 0 0 .3rem;
+  color: var(--ink);
+}
+.recover-card .recover-text p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  max-width: 56ch;
+}
+.recover-card .recover-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .recover-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 1.4rem 1.2rem;
+  }
+  .recover-card .recover-icon { margin: 0 auto; font-size: 2.8rem; }
+  .recover-card .recover-btn { justify-self: center; }
+}
+
 /* ---------- Instagram CTA ---------- */
 .section-insta {
   background:

@@ -147,6 +147,38 @@
 </footer>
 <script src="script.js"></script>
 <script>
+  // Preselect topic + scroll to form if URL has ?topic=... (e.g. from home-page CTA)
+  (function () {
+    const params = new URLSearchParams(location.search);
+    const topic = params.get('topic');
+    if (!topic) return;
+    const topicMap = {
+      'foto-wiederfinden':  'Foto wiederfinden',
+      'convention-buchung': 'Convention-Buchung',
+      'kooperation':        'Kooperation / Sponsoring',
+      'presse':             'Presse / Interview',
+      'hallo':              'Einfach Hallo sagen 👋'
+    };
+    const targetLabel = topicMap[topic];
+    if (!targetLabel) return;
+    const select = document.getElementById('topic');
+    if (select) {
+      Array.from(select.options).forEach(opt => {
+        if (opt.textContent.trim() === targetLabel) opt.selected = true;
+      });
+    }
+    // Smooth-scroll the form into view and focus the message textarea
+    setTimeout(() => {
+      const form = document.getElementById('contact-form');
+      if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        const msg = document.getElementById('msg');
+        if (msg) msg.focus();
+      }, 600);
+    }, 100);
+  })();
+</script>
+<script>
   (function () {
     const form = document.getElementById('contact-form');
     if (!form) return;
