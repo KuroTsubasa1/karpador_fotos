@@ -368,6 +368,39 @@ input:focus, textarea:focus, select:focus {
 }
 textarea { min-height: 140px; resize: vertical; }
 
+/* Contact form feedback box */
+.contact-feedback {
+  margin-top: 1rem;
+  padding: 0;
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: .98rem;
+  line-height: 1.4;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity .25s ease, padding .25s ease, max-height .25s ease, border-width .25s;
+  border: 0 solid;
+}
+.contact-feedback:not(:empty) {
+  opacity: 1;
+  padding: .9rem 1.15rem;
+  max-height: 200px;
+  border-width: 2px;
+}
+.contact-feedback.success {
+  background: rgba(78,205,196,.18);
+  border-color: var(--aqua-deep);
+  color: var(--aqua-deep);
+}
+.contact-feedback.error {
+  background: rgba(255,107,157,.16);
+  border-color: var(--pink);
+  color: #B8245E;
+}
+#contact-submit:disabled { opacity: .7; cursor: wait; }
+
 /* ---------- Footer ---------- */
 .footer {
   background: var(--ink); color: #d6d6e6; padding: 3rem 0 2rem; margin-top: 4rem;

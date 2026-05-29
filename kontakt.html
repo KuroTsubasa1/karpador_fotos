@@ -49,20 +49,20 @@
     <div class="grid cols-2">
       <div class="panel reveal">
         <h2>Schreib uns</h2>
-        <form onsubmit="event.preventDefault(); alert('Danke! In der finalen Version geht das an unsere Mail-Inbox.');">
+        <form id="contact-form" novalidate>
           <div class="form-row two">
             <div>
               <label for="name">Dein Name</label>
-              <input id="name" type="text" required placeholder="z.B. Pikachu Fan" />
+              <input id="name" name="name" type="text" required placeholder="z.B. Pikachu Fan" autocomplete="name" />
             </div>
             <div>
               <label for="email">E-Mail</label>
-              <input id="email" type="email" required placeholder="du@beispiel.de" />
+              <input id="email" name="email" type="email" required placeholder="du@beispiel.de" autocomplete="email" />
             </div>
           </div>
           <div class="form-row">
             <label for="topic">Worum geht's?</label>
-            <select id="topic">
+            <select id="topic" name="topic">
               <option>Convention-Buchung</option>
               <option>Foto wiederfinden</option>
               <option>Kooperation / Sponsoring</option>
@@ -72,9 +72,15 @@
           </div>
           <div class="form-row">
             <label for="msg">Deine Nachricht</label>
-            <textarea id="msg" placeholder="Erzähl uns, was los ist..."></textarea>
+            <textarea id="msg" name="msg" required placeholder="Erzähl uns, was los ist..."></textarea>
           </div>
-          <button class="btn pink" type="submit">Nachricht senden →</button>
+          <!-- Honeypot: bots fill this, humans don't see it -->
+          <div aria-hidden="true" style="position:absolute; left:-9999px; top:-9999px; opacity:0;">
+            <label for="website">Webseite (bitte leer lassen)</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <button class="btn pink" type="submit" id="contact-submit">Nachricht senden →</button>
+          <div id="contact-feedback" class="contact-feedback" role="status" aria-live="polite"></div>
         </form>
       </div>
 
@@ -140,5 +146,79 @@
   </div>
 </footer>
 <script src="script.js"></script>
+<script>
+  (function () {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const submitBtn = document.getElementById('contact-submit');
+    const feedback = document.getElementById('contact-feedback');
+
+    let feedbackTimer = null;
+    function showFeedback(text, kind) {
+      feedback.textContent = text;
+      feedback.className = 'contact-feedback ' + (kind || '');
+      if (feedbackTimer) clearTimeout(feedbackTimer);
+      feedbackTimer = setTimeout(() => {
+        feedback.textContent = '';
+        feedback.className = 'contact-feedback';
+      }, 8000);
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (submitBtn.disabled) return;
+
+      // Honeypot — if filled, silently pretend success
+      if (form.website && form.website.value) {
+        showFeedback('Danke! Wir melden uns bald ♥', 'success');
+        form.reset();
+        return;
+      }
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const topic = form.topic.value;
+      const msg = form.msg.value.trim();
+
+      if (!name || !email || !msg) {
+        showFeedback('Bitte fülle Name, E-Mail und Nachricht aus.', 'error');
+        return;
+      }
+
+      const payload = {
+        msg: '[' + topic + ']\n\n' + msg,
+        sender: email,
+        name: name
+      };
+
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sende…';
+
+      try {
+        const res = await fetch('https://pocket.lasseharm.space/form/send/portfolio', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.status === 200) {
+          showFeedback('Danke! Deine Nachricht ist angekommen — wir melden uns innerhalb von 2-3 Tagen ♥', 'success');
+          form.reset();
+        } else if (res.status === 400) {
+          showFeedback('Da fehlt was — bitte schau nochmal über die Felder.', 'error');
+        } else {
+          showFeedback('Uff, das hat nicht geklappt (Code ' + res.status + '). Versuch es nochmal oder schreib direkt an service@3dps.space.', 'error');
+        }
+      } catch (err) {
+        console.error('Contact form error:', err);
+        showFeedback('Netzwerk-Problem. Versuch es nochmal oder schreib direkt an service@3dps.space.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
+  })();
+</script>
 </body>
 </html>
